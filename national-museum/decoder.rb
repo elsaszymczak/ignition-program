@@ -1,5 +1,5 @@
-  require_relative "morse"
-  require 'pry-byebug'
+require_relative "morse"
+require 'pry-byebug'
 
 class Decoder
   attr_reader :sequence, :dictionary
@@ -7,11 +7,9 @@ class Decoder
   def initialize(attributes={})
     raise ArgumentError.new("Sequence must be smaller than 100000 characters") unless attributes[:sequence].length < 100000
     raise ArgumentError.new("The dictionary can only contain a maximum of 100000 words") unless attributes[:number_of_words] < 100000
-    # raise ArgumentError.new("Every dictionary's word has a maximum length of 20 characters") unless @dictionary_words_length < 20
 
     @sequence = attributes[:sequence]
     @dictionary = attributes[:dictionary]
-    # @dictionary_words_length = attributes[:dictionary_words_length]
     @number_of_words = attributes[:number_of_words]
 
     possible_messages
